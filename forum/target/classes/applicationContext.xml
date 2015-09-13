@@ -37,10 +37,15 @@
     <mybatis:scan base-package="com.goforit.firstapple.forum.mapper" />
     <!-- mapper -->
   
-  <!-- 
-    <bean id="personDao" class="com.deppon.test04.dao.impl.PersonDao"></bean>  
-       
-    <bean id="personService" class="com.goforit.firstapple.forum.service.PersonServiceImpl">  
-    </bean>  
-      -->
+	<bean  id="nodeHandlerFactory" class="com.goforit.firstapple.forum.node.engine.NodeHandlerFactory">
+		<property name="nodeHandlerMap">
+		  <map>
+		  	<entry key="NORMAL" value-ref="normalNodeHandler"></entry>
+		  </map>
+		</property>
+	</bean>
+	
+	
+	
+	
 </beans>  
