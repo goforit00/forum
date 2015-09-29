@@ -10,7 +10,7 @@ public class User {
 
     private String name;
 
-    private String passwd;
+    private transient String passwd;
     
     private String realName;
     

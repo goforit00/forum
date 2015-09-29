@@ -4,7 +4,7 @@ import java.sql.Date;
 
 
 public class Topic {
-    transient
+
     private long id;
     
     private long boardId;
@@ -19,12 +19,16 @@ public class Topic {
     /** 回帖数 */
     private int postNum;
     
-    /** 主题帖子创建的时间  */
-    private Date createdTime;
-    
+
     /** 帖子最后回复的时间 */
     private Date lastPostTime;
 
+    /** 主题帖子创建的时间  */
+    private Date createdTime;
+    
+    private Date modifiedTime;
+    
+    
     public long getId() {
         return id;
     }
@@ -89,12 +93,23 @@ public class Topic {
         this.lastPostTime = lastPostTime;
     }
 
+    public Date getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
     @Override
     public String toString() {
         return "Topic [id=" + id + ", boardId=" + boardId + ", topicTitle=" + topicTitle
                + ", user=" + user + ", viewNum=" + viewNum + ", postNum=" + postNum
-               + ", createdTime=" + createdTime + ", lastPostTime=" + lastPostTime + "]";
+               + ", lastPostTime=" + lastPostTime + ", createdTime=" + createdTime
+               + ", modifiedTime=" + modifiedTime + "]";
     }
+
+
     
     
 }
