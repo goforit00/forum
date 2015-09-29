@@ -6,7 +6,7 @@ public class LoginLog {
     
     private long id;
     
-    private long userId;
+    private User user;
     
     private String loginArea;
     
@@ -27,12 +27,12 @@ public class LoginLog {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getLoginArea() {
@@ -69,9 +69,11 @@ public class LoginLog {
 
     @Override
     public String toString() {
-        return "LoginLog [id=" + id + ", userId=" + userId + ", loginArea=" + loginArea + ", ip="
-               + ip + ", loginTime=" + loginTime + ", isSuc=" + isSuc + "]";
+        return "LoginLog [id=" + id + ", user=" + user + ", loginArea=" + loginArea + ", ip=" + ip
+               + ", loginTime=" + loginTime + ", isSuc=" + isSuc + "]";
     }
+
+
 
     
     

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 
 public class Topic {
-    
+    transient
     private long id;
     
     private long boardId;
