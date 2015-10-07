@@ -1,5 +1,73 @@
 package com.goforit.firstapple.forum.mapper;
 
+import java.io.Serializable;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.jdbc.SQL;
+import org.springframework.stereotype.Repository;
+
+import com.goforit.firstapple.forum.model.Post;
+import com.goforit.firstapple.forum.model.query.PostQuery;
+
+
+
+@Repository
 public interface PostMapper {
+    
+    String INSERT="insert into post(topic_id,user_id,post_seq_num,post_text,like_num,dislike_num,created_time,modified_time)"+
+    " values(#{topickId},#{user.id},#{postSeqNum},#{postText},#{likeNum},#{dislikeNum},now(),now())";
+
+    
+    String UPDATE="update post set topic_id=#{topicId},user_id=#{user.id},post_seq_num=#{postSeqNum},"+
+    "post_text=#{postText},like_num=#{likeNum},dislike_num=#{dislikeNum},modified_time=#{modifiedTime} where id=#{id}";
+
+    @Select("select * from post where id=#{id}")
+    Post get(Serializable id);
+    
+    @Insert(INSERT)
+    @Options(useGeneratedKeys=true,flushCache=true,keyProperty="id")
+    int insert(Post post);
+    
+    @Update(UPDATE)
+    @Options(useCache=true,flushCache=true)
+    int update(Post post);
+    
+    @Delete("delete from post where id=#{id}")
+    int delete(Serializable id);
+    
+    @SelectProvider(type=PostProvider.class,method="method")
+    List<Post> query(PostQuery query);
+    
+    
+    class PostProvider{
+        public String query(PostQuery query){
+            SQL sql=new SQL(){
+                {
+                    SELECT("*");
+                    FROM("post p");
+                }
+            };
+            sql.WHERE("topic_id=#{topicId}");
+            appendWhereClause(sql, query);
+            return sql.toString();
+            
+        }
+        
+        private void appendWhereClause(SQL sql,PostQuery query){
+            if(null==query){
+                return ;
+            }
+            
+            if(query.getPostSeqNum()>0){
+                sql.WHERE("post_seq_num=#{postSeqNum}");
+            }
+        }
+    }
 
 }

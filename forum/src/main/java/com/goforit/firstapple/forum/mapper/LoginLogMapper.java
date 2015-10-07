@@ -11,12 +11,15 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.jdbc.SQL;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.goforit.firstapple.forum.model.LoginLog;
 import com.goforit.firstapple.forum.model.User;
 import com.goforit.firstapple.forum.model.query.LoginLogQuery;
 
+
+@Repository
 public interface LoginLogMapper extends BaseMapper {
 
     String INSERT = "insert into login_log(user_id,login_area,ip,login_time) values(#{user.id},#{loginArea},#{ip},now())";

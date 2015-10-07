@@ -9,16 +9,18 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import com.goforit.firstapple.forum.model.Board;
 
+
+
+@Repository
 public interface BoardMapper extends BaseMapper{
     
     String INSERT="insert into board(name,desc,topic_num,create_time,modified_time) values(#{name},#{desc},#{topic_num},#{createTime},#{modifiedTime})";
     
     String UPDATE="update board set name=#{name},desc=#{desc},topic_num=#{topicNum},modified_time=now() where id=#{id}";
-    
-
     
     @Results({
         @Result(property="id",column="id"),
