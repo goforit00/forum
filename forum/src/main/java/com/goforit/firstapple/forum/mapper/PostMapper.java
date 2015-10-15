@@ -41,7 +41,7 @@ public interface PostMapper {
     @Delete("delete from post where id=#{id}")
     int delete(Serializable id);
     
-    @SelectProvider(type=PostProvider.class,method="method")
+    @SelectProvider(type=PostProvider.class,method="query")
     List<Post> query(PostQuery query);
     
     

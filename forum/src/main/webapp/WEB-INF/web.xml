@@ -21,9 +21,26 @@
         <param-value>maven.example.root</param-value>  
     </context-param>
     
-    <!-- Spring的log4j监听器 -->  
+    <!-- Spring的log4j监听器
     <listener>  
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>  
     </listener>   
+      -->
+
+<!-- -->
+    <servlet> 
+        <servlet-name>javax.ws.rs.core.Application</servlet-name> 
+      	<param-name>javax.ws.rs.Application</param-name>
+      	<param-value>com.goforit.firstapple.forum.restful.RestApplication</param-value>
+        <load-on-startup>1</load-on-startup> 
+    </servlet> 
      
+
+    <servlet-mapping>
+         <servlet-name>javax.ws.rs.core.Application</servlet-name>
+         <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+      
+  
+      
 </web-app>  

@@ -93,6 +93,10 @@ public interface TopicMapper extends BaseMapper{
             if( !StringUtils.isEmpty(query.getTopicTitle())){
                 sql.WHERE("topic_title=#{topicTitle}");
             }
+            
+            if( -1!=query.getUserId()){
+                sql.WHERE("user_id=#{userId}");
+            }
         }
         
         
