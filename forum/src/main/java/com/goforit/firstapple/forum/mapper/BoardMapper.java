@@ -18,23 +18,24 @@ import com.goforit.firstapple.forum.model.Board;
 @Repository
 public interface BoardMapper extends BaseMapper{
     
-    String INSERT="insert into board(name,desc,topic_num,create_time,modified_time) values(#{name},#{desc},#{topic_num},#{createTime},#{modifiedTime})";
+    String INSERT="insert into board(name,des,topic_num,created_time,modified_time) values(#{name},#{des},#{topicNum},now(),now())";
+//    String INSERT="insert into board(name,des,topic_num,created_time,modified_time) values('1','1','1',now(),now())";
     
-    String UPDATE="update board set name=#{name},desc=#{desc},topic_num=#{topicNum},modified_time=now() where id=#{id}";
+    String UPDATE="update board set name=#{name},des=#{des},topic_num=#{topicNum},modified_time=now() where id=#{id}";
     
     @Results({
         @Result(property="id",column="id"),
         @Result(property="name",column="name"),
-        @Result(property="desc",column="desc"),
+        @Result(property="des",column="des"),
         @Result(property="topicNum",column="topic_num"),
-        @Result(property="createdTime",column="create_time"),
+        @Result(property="createdTime",column="created_time"),
         @Result(property="modifiedTime",column="modified_time")
     })
     @Select("select * from board where id=#{id}")
     Board get(Serializable id);
     
     @Insert(INSERT)
-    @Options(useGeneratedKeys=true,flushCache=true,keyProperty="id")
+    @Options(useGeneratedKeys=true,keyProperty="id",flushCache=true)
     int insert(Board board);
     
     @Update(UPDATE)

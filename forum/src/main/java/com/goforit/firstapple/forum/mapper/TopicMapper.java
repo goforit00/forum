@@ -24,9 +24,9 @@ import com.goforit.firstapple.forum.model.query.TopicQuery;
 public interface TopicMapper extends BaseMapper{
     
     String INSERT="insert into topic(board_id,topic_title,user_id,view_num,post_num,last_post_time,created_time,modified_time) "+
-    "values(#{boardId},#{topicTitle},#{userId},#{viewNum},#{postNum},now(),now(),now())";
+    "values(#{boardId},#{topicTitle},#{user.id},#{viewNum},#{postNum},now(),now(),now())";
     
-    String UPDATE="update topic set board_id=#{boardId},topic_title=#{topicTitle},user_id=#{userId},"+
+    String UPDATE="update topic set board_id=#{boardId},topic_title=#{topicTitle},user_id=#{user.id},"+
     "view_num=#{viewNum},post_num=#{postNum},last_post_time=#{lastPostTime},modified_time=now() where id=#{id}";
     
     @Results({

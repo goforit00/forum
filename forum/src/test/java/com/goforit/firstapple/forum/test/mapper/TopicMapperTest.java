@@ -1,11 +1,9 @@
 package com.goforit.firstapple.forum.test.mapper;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
-
-import javax.management.Query;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +53,7 @@ public class TopicMapperTest {
         query.setTopicTitle("hello kitty");
         List<Topic> topics=topicMapper.query(query);
         
-        assertTrue(topics.size()==1);
+        assertTrue(topics.size()>=1);
         assertTrue(!CollectionUtils.isEmpty(topics));
         
         //update

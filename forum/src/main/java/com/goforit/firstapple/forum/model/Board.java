@@ -1,6 +1,8 @@
 package com.goforit.firstapple.forum.model;
 
-import java.sql.Date;
+import java.util.Date;
+
+
 
 public class Board {
     
@@ -8,9 +10,9 @@ public class Board {
 
     private String name;
     
-    private String desc;
+    private String des;
     
-    private int topicNum;
+    private long topicNum;
     
     private Date createdTime;
     
@@ -32,22 +34,24 @@ public class Board {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+
+
+    public String getDes() {
+        return des;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDes(String des) {
+        this.des = des;
     }
 
-    public int getTopicNum() {
+    public long getTopicNum() {
         return topicNum;
     }
 
-    public void setTopicNum(int topicNum) {
+    public void setTopicNum(long topicNum) {
         this.topicNum = topicNum;
     }
-    
+
     public Date getCreatedTime() {
         return createdTime;
     }
@@ -64,10 +68,6 @@ public class Board {
         this.modifiedTime = modifiedTime;
     }
 
-    @Override
-    public String toString() {
-        return "Board [id=" + id + ", name=" + name + ", desc=" + desc + ", topicNum=" + topicNum
-               + ", createdTime=" + createdTime + ", modifiedTime=" + modifiedTime + "]";
-    }
+    
 
 }
