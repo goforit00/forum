@@ -11,10 +11,8 @@ public class Post {
     
     private User user;
     
-    /** 帖子回复的序号，即楼数 */
     private long  postSeqNum;
 
-    /** 梯子回复的内容 */
     private String postText;
     
     private long likeNum;
@@ -116,11 +114,19 @@ public class Post {
     }
 
 
+
     @Override
     public String toString() {
-        return "Post [id=" + id + ", topicId=" + topicId + ", user=" + user + ", postSeqNum="
-               + postSeqNum + ", postText=" + postText + ", createdTime=" + createdTime + "]";
+        return "Post{" +
+                "id=" + id +
+                ", topicId=" + topicId +
+                ", user=" + user +
+                ", postSeqNum=" + postSeqNum +
+                ", postText='" + postText + '\'' +
+                ", likeNum=" + likeNum +
+                ", dislikeNum=" + dislikeNum +
+                ", createdTime=" + createdTime +
+                ", modifiedTime=" + modifiedTime +
+                '}';
     }
-    
-    
 }
